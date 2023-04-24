@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'ckeditor',
     'ckeditor_uploader',
     'about',
@@ -88,7 +89,11 @@ DATABASES = {
     'default': dj_database_url.config(default=DATABASES_URL),
 }
 
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dfh8ves8a',
+    'API_KEY': '181565219632894',
+    'API_SECRET': 'j4SIAw-K9AUHGLuCYBMVz9_C9VA'
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -135,7 +140,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static_cdn/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -143,9 +148,11 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR / "static_cdn"
 MEDIA_ROOT = BASE_DIR / "media_cdn"
-STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
