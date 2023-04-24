@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
@@ -142,7 +143,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR / "static_cdn"
 MEDIA_ROOT = BASE_DIR / "media_cdn"
-
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
