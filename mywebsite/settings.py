@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import cloudinary_storage
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'cloudinary_storage',
     'ckeditor',
     'ckeditor_uploader',
     'about',
@@ -52,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,12 +89,6 @@ DATABASES_URL = 'postgresql://postgres:a3DtRFzKDkRy4kIGWCmx@containers-us-west-8
 
 DATABASES = {
     'default': dj_database_url.config(default=DATABASES_URL),
-}
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dfh8ves8a',
-    'API_KEY': '181565219632894',
-    'API_SECRET': 'j4SIAw-K9AUHGLuCYBMVz9_C9VA'
 }
 
 # Password validation
@@ -148,11 +144,18 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR / "static_cdn"
 MEDIA_ROOT = BASE_DIR / "media_cdn"
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dfh8ves8a',
+    'API_KEY': '181565219632894',
+    'API_SECRET': 'j4SIAw-K9AUHGLuCYBMVz9_C9VA'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
