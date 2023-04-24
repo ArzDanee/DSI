@@ -26,7 +26,7 @@ SECRET_KEY = 'n3y&g92th+xm1i_ms^yd9&q@m4mum&$50j0%rk4uc221&kls%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://dsi-production.up.railway.app/','https://motiongames.site/', 'http://motiongames.site/']
 
 
 # Application definition
