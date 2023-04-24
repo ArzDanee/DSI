@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'n3y&g92th+xm1i_ms^yd9&q@m4mum&$50j0%rk4uc221&kls%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -78,7 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mywebsite.wsgi.application'
 
-CSRF_TRUSTED_ORIGINS=['https://dsi-production.up.railway.app','https://motiongames.site', 'http://motiongames.site']
+CSRF_TRUSTED_ORIGINS=['https://dsi-production.up.railway.app','https://*.motiongames.site', 'http://*.motiongames.site']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES_URL = 'postgresql://postgres:a3DtRFzKDkRy4kIGWCmx@containers-us-west-8.railway.app:6055/railway'

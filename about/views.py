@@ -8,4 +8,4 @@ def index(request):
         'ref':'About',
 
     }
-    return render(request, 'about\index.html', context)
+    return render(request, 'about/index.html', context)
