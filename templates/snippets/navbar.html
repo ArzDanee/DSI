@@ -1,0 +1,48 @@
+{% load static %}
+
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="main-navbar">
+  <div class="container-fluid fill-height">
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'index' %}"><img class="logo" src="{% static 'img/Banner.webp' %}" alt="logo"></a>
+    
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      
+      <div class="offcanvas-header">
+      <button type="button" class="btn-close text-reset me-auto btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title ms-auto" id="offcanvasExampleLabel"><img class="logo" src="{% static 'img/Banner.webp' %}" alt="logo"></h5>
+      </div>
+      
+      <div class="offcanvas-body">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index-game' %}">Games</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index-blog' %}">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index-about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.linkedin.com/">Career</a>
+          </li>
+        </ul>
+
+        <form class="d-flex ms-auto search" action="{% url 'search' %}" method="get">
+          {% csrf_token %}
+          <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="{{query}}">
+          <button class="btn" type="submit">
+            <i class="fas fa-search search-icon"></i>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</nav>

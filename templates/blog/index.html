@@ -1,0 +1,74 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'css/blog/index.css' %}">
+{% endblock css_file %}
+
+
+{% block content1 %}
+<div class="container-fluid page-header py-5 mb-5">
+  <div class="container py-5">
+    <h1 class="display-3 text-white mb-3 animated slideInDown">Blog</h1>
+  </div>
+</div>
+{% endblock content1 %}
+
+
+{% block content2 %}
+
+{% endblock content2 %}
+
+
+{% block content3 %}
+<div class="section">
+  <div class="container">
+
+    <div class="d-flex p-2 align-items-center justify-content-center mb-3">
+      <h3 class="section-header-text-black">Recent</h3>
+    </div>
+
+    <div class="row align-items-stretch">
+
+      {% for obj in latest %}
+      <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 item-box" data-aos="fade-up" data-aos-delay="100">
+        <div class="media-entry">
+          <a href="{% url 'post' obj.slug %}">
+            <img src="{{ obj.thumbnail.url }}" alt="Image" class="img-fluid">
+          </a>
+          <div class="bg-white m-body">
+            <span class="date">{{ obj.timestamp }}</span>
+            <h3>{{ obj.title }}</h3>
+            <p>{{ obj.overview }}</p>
+
+            <a href="{% url 'post' obj.slug %}" class="more d-flex align-items-center float-start">
+              <span class="label">Read More</span>
+              <span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="d-flex justify-content-center align-content-center mb-3">
+        <nav class="mt-5" aria-label="Page navigation example" data-aos="fade-up" data-aos-delay="100">
+          <ul class="custom-pagination pagination">
+            
+            {% if page_obj.has_previous %}
+            <li class="page-item prev"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>  
+            {% endif %}
+              
+            <li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+            
+            {% if page_obj.has_next %}
+            <li class="page-item next"><a class="page-link" href="?page={{ page_obj.next_page_number }}"">Next</a></li>
+            {% endif %}
+              
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock content3 %}

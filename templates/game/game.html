@@ -1,0 +1,94 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+
+
+
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static '/css/game/game.css' %}">
+{% endblock css_file %}
+
+
+{% block content1 %}
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Game</h1>
+    </div>
+</div>
+{% endblock content1 %}
+
+
+{% block content2 %}
+<section class="game-details spad">
+    <div class="container item-box">
+        <div class="game__details__content">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="game__details__pic"
+                        style="background: url('{{ game.thumbnail.url  }}'); background-size: cover; background-repeat: no-repeat; background-position: center center; border-radius: 20px;">
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="game__details__text">
+                        <div class="game__details__title">
+                            <h2>{{ game.title }}</h2>
+                            <span>{{ game.game_mechanism }}</span>
+                        </div>
+                        <div class="game__details__rating">
+                            <div class="rating">
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star-half"></i></a>
+                            </div>
+                            <span>7 Votes</span>
+                        </div>
+                        <p>{{ game.description }}</p>
+                        <div class="game__details__widget">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <ul>
+                                        <li><span>Release date:</span>{{ game.release_date }}</li>
+                                        <li><span>Platform:</span>{{ game.platform }}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <ul>
+                                        <li><span>Type:</span>{{ game.category }}</li>
+                                        <li><span>Genre:</span>{{ game.genre }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="game__details__btn">
+                            <a href="https://play.google.com/" class="playstore-btn"><span>                                <i class="fa-brands fa-google-play"></i>
+                                Download now
+                            </span>
+                            </a>
+                            <a href="https://store.steampowered.com/" class="steam-btn"><span><i class="fa-brands fa-steam"></i> Download now</span> 
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex p-2 align-items-center justify-content-center mt-4">
+                <h4 class="gallery_title">Gallery</h4>
+            </div>              
+            <section class="gallery mt-2 justify-content-center align-content-center">
+                {% for image in game.images %}
+                <div class="gallery__item">
+                  <input type="radio" id="img-{{forloop.counter}}" {% if forloop.first %}checked{% endif %} name="gallery" class="gallery__selector"/>
+                  <img class="gallery__img image_border w-100" src="{{ image.file.url }}" alt=""/>
+                  <label for="img-{{ forloop.counter }}" class="gallery__thumb"><img class="image-border" src="{{ image.file.url }}" alt=""/></label>
+                </div>
+                {% endfor %}
+            </section>
+
+        </div>
+    </div>
+</section>
+{% endblock content2 %}

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    
+
+
+
+    <title>{{title}}</title>
+
+
+    {% include "snippets/config.html" %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">   
+
+
+
+
+    {% block css_file %}
+    
+    {% endblock css_file %}
+</head>
+<body>
+    {% include 'snippets/preloader.html' %}
+    {% include 'snippets/navbar.html' %}
+    {% include 'snippets/back_to_top.html' %}
+
+{% block content1 %}
+  
+{% endblock content1 %}
+
+
+{% block content2 %}
+    
+{% endblock content2 %}
+
+{% block content3 %}
+    
+{% endblock content3 %}
+
+{% block content4 %}
+    
+{% endblock content4 %}
+
+{% block content5 %}
+    
+{% endblock content5 %}
+
+{% block content6 %}
+    
+{% endblock content6 %}
+    
+{% include 'snippets/footer.html' %}
+  
+</body>
+</html>
+
+{% block js_file %}
+
+{% endblock js_file %}

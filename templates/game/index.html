@@ -1,0 +1,93 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+
+
+
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static '/css/game/index.css' %}">
+{% endblock css_file %}
+
+
+{% block js_file %}
+<script src="{% static '/js/game/index.js' %}"></script>
+{% endblock js_file %}
+    
+
+
+{% block content1 %}
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Games</h1>
+    </div>
+</div>
+{% endblock content1 %}
+
+{% block content2 %}
+<div class="container">
+    <div class="d-flex p-2 align-items-center justify-content-center">
+        <h3 class="section-header-text-black">Featured Games</h3>
+    </div>
+
+    <div class="owl-carousel owl-features item-box">
+        {% for obj in featured %}
+        <div class="item">
+            <a href="{% url 'game' obj.slug %}">
+                <img src="{{ obj.thumbnail.url }}" alt="{{ obj.title }}">
+                <h3 class="features-title">{{ obj.title }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content2 %}
+
+
+{% block content3 %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="d-flex p-2 align-items-center justify-content-center">
+            <h3 class="section-header-text-black">Recent Games</h3>
+        </div>
+    </div>
+
+
+    {% for obj in latest %}
+    <div class="col">
+        <div class="artboard item-box">
+            <a href="{% url 'game' obj.slug %}">
+                <div class="card">
+                    <div class="card__side card__side--back">
+                        <div class="card__cover" style="background-image: linear-gradient(to right bottom, #716f6f63, #ff582174), url('{{ obj.thumbnail.url }}'); background-size: cover; background-position-x: center;">
+                            <h4 class="card__heading">
+                                <span class="card__heading-span">{{ obj.title }}</span>
+                            </h4>
+                        </div>
+                        <div class="card__details">
+                            <ul>
+                                <li>Platform: {{ obj.platform }}</li>
+                                <li>Genre: {{ obj.genre }}</li>
+                                <li>Release date: {{ obj.release_date }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card__side card__side--front" style="background-image: linear-gradient(to right bottom, #716f6f63, #ff582174), url('{{ obj.thumbnail.url }}'); background-size: cover; background-position-x: center;">
+                        <div class="card__theme">
+                            <div class="card__theme-box">
+                                <p class="card__subject">{{ obj.platform }}</p>
+                                <p class="card__title">{{ obj.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+</div>
+{% endblock content3 %}

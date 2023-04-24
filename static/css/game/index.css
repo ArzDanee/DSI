@@ -1,0 +1,161 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(../../img/game/header-game.webp) center center no-repeat;
+    background-size: cover;
+}
+
+.item-box {
+    text-align: center;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    width: 100%;
+}
+
+.features-title {
+    color: #000000;
+    font-weight: 700;
+}
+
+.artboard {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding: 60px;
+    height: 100%;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .artboard {
+        padding: 15px;
+    }
+}
+
+.card {
+    flex: initial;
+    position: relative;
+    height: 400px;
+    width: 300px;
+    -moz-perspective: 3200px;
+    perspective: 3200px;
+    margin: 30px;
+}
+
+.card__side {
+    height: 400px;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    /* We don't want to see the back part of the element. */
+    backface-visibility: hidden;
+    /* We don't want to see the back part of the element. */
+    border-radius: 3px;
+    overflow: hidden;
+    /* The image is overflowing the parent. */
+    box-shadow: 0 32px 96px rgba(0, 0, 0, 0.15);
+}
+
+.card__side--back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+.card:hover .card__side--back {
+    transform: rotateY(0);
+}
+
+.card:hover .card__side--front {
+    transform: rotateY(-180deg);
+}
+
+.card__theme {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 54%;
+    width: 90%;
+    text-align: center;
+}
+
+.card__theme-box {
+    color: #fff;
+}
+
+.card__subject {
+    font-family: "Inconsolata", monospace;
+    letter-spacing: 6px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card__title {
+    font-family: "VT323", monospace;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.card__cover {
+    position: relative;
+    background-size: cover;
+    height: 120px;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    
+}
+
+
+.card__heading {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+}
+
+.card__heading-span {
+    font-family: "VT323", monospace;
+    font-size: 30px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.card__details {
+    font-family: "Inconsolata", monospace;
+    padding: 30px 15px; 
+}
+
+.card__details ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0%;
+}
+
+.card__details ul li {
+    text-align: center;
+    font-size: 18px;
+    padding: 8px;
+}
+    
+    .card__details ul li:not(:last-child) {
+    border-bottom: 2px solid #eee;
+    }
+    

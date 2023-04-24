@@ -1,0 +1,83 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock css_file %}
+
+
+{% block content1 %}
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Search</h1>
+    </div>
+</div>
+{% endblock content1 %}
+
+
+{% block content2 %}
+<div class="container bootstrap snippets">
+    <hr>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="well search-result mb-3">
+                <div class="input-group">
+                    <form class="d-flex w-100" action="{% url 'search' %}" method="get">                    {% csrf_token %}
+                        <input name="q" class="form-control form-2" type="search" placeholder="Search" aria-label="Search"
+                            value="{{query}}">
+                        <span class="input-group-btn">
+                            <button class="btn search-btn" type="submit">
+                                Search
+                            </button>
+                        </span></form>
+
+                </div>
+            </div>
+            
+                <div>
+                    {{ total_result }} result for "{{query}}"
+                </div>
+                
+                {% for game in game_results %}
+                <div class="well search-result">
+                    <div class="row item-box">
+                        <a href="{% url 'game' game.slug %}" class="result-link">
+                            <div class="overview">
+                                <img class="img-responsive img-overview" src="{{ game.thumbnail.url }}" alt="">
+                            </div>
+                            <div class="col title ms-4">
+                                <h3><span class="badge badge-cat me-2">{{ game.category }}</span>{{ game.title }}</h3>
+                                <p>{{ game.description | slice:":500" }}{% if game.description|length > 500 %}...{% endif %}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% for post in post_results %}
+                <div class="well search-result">
+                    <div class="row item-box">
+                        <a href="{% url 'post' post.slug %}" class="result-link">
+                            <div class="overview">
+                                <img class="img-responsive img-overview" src="{{ post.thumbnail.url }}" alt="">
+                            </div>
+                            <div class="col title ms-4">
+                                <h3><span class="badge badge-cat me-2">{{ post.category }}</span>{{ post.title }}</h3>
+                                <p>{{ post.overview }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            
+                
+        </div>
+    </div>
+</div>
+{% endblock content2 %}
+
+
+{% block js_file %}
+<script src="{% static '\js\search.js' %}" type="text/javascript"></script>
+{% endblock js_file %}

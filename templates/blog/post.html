@@ -1,0 +1,64 @@
+{% extends 'snippets/base.html' %}
+{% load static %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'css/blog/post.css' %}">
+{% endblock css_file %}
+
+{% block js_file %}
+<script src="{% static 'js/blog/post.js' %}"></script>
+{% endblock js_file %}
+
+{% block content1 %}
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-3 text-white mb-3 animated slideInDown">Blog</h1>
+    </div>
+</div>
+{% endblock content1 %}
+
+<!-- Page content-->
+
+{% block content2 %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <!-- Post content-->
+            <article class="item-box">
+                <!-- Post header-->
+                <header class="mb-4">
+                    <div class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                        <!-- Post meta content-->
+                        <div class="text-muted fst-italic mb-2">{{ post.timestamp }}</div>
+                        <!-- Post categories-->
+                        <a class="badge bg-secondary text-decoration-none link-light fs-5" href="#!">{{ post.category }}</a>
+                    </div>
+                    <!-- Preview image figure-->
+                    <figure class="d-flex mb-4 justify-content-center"><img class="img-fluid rounded"
+                            src="{{ post.thumbnail.url  }}" alt="..." /></figure>
+                    <!-- Post content-->
+                    <section class="mb-5">
+                        <p class="fs-5 mb-4">{{ post.content | safe }}</p>
+                    </section>
+            </article>
+
+        </div>
+        <div class="card mb-4 col content">
+            <div class="card-header align-content-center justify-content-center"><h2>latest</h2></div>
+            <div class="card-body">
+                {% for obj in latest %}
+                <a href="{% url 'post' obj.slug %}">
+                    <div class="d-flex m-2 latest justify-content-center align-content-center">
+                        <h3 class="latest-title">{{ obj.title }}</h3>
+                
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content2 %}
