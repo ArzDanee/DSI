@@ -11,24 +11,21 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import os
-import environ
 from pathlib import Path
 import dj_database_url
 
-env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'n3y&g92th+xm1i_ms^yd9&q@m4mum&$50j0%rk4uc221&kls%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -89,7 +86,7 @@ DATABASES = {
     'default': dj_database_url.config(default=DATABASES_URL),
 }
 
-DATABASES_URL = env('DATABASE_URL')
+DATABASES_URL = 'postgresql://postgres:a3DtRFzKDkRy4kIGWCmx@containers-us-west-8.railway.app:6055/railway'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -126,7 +123,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Jakarta'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
