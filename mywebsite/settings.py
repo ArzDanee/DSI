@@ -78,7 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mywebsite.wsgi.application'
 
-
+CSRF_TRUSTED_ORIGINS=['https://dsi-production.up.railway.app/','https://motiongames.site/', 'http://motiongames.site/']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES_URL = 'postgresql://postgres:a3DtRFzKDkRy4kIGWCmx@containers-us-west-8.railway.app:6055/railway'
