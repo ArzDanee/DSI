@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="{% static '/css/about/index.css' %}">
 {% endblock css_file %}
 
+{% block js_file %}
+<script src="{% static '/js/about/index.js' %}"></script>
+{% endblock js_file %}
 
 {% block content1 %}
 <div class="container-fluid page-header py-5 mb-5">
@@ -215,6 +218,3 @@
 </div>
 {% endblock content4 %}
 
-{% block js_file %}
-<script src="{% static '/js/about/index.js' %}"></script>
-{% endblock js_file %}
