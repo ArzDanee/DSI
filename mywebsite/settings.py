@@ -131,6 +131,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+AWS_ACCESS_KEY_ID = 'AKIATBGANNY66OPIIVUR'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'tubesdsi'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'eu-central-1'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+
 
 STATIC_URL = 'static_cdn/'
 
@@ -140,6 +149,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR / "static_cdn"
 MEDIA_ROOT = BASE_DIR / "media_cdn"
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # Default primary key field type

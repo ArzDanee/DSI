@@ -12,7 +12,7 @@ class Post(models.Model):
     overview = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     content = RichTextUploadingField()
-    thumbnail = models.ImageField()
+    thumbnail = models.ImageField(upload_to='blog_thumbnail',)
     featured = models.BooleanField()
 
     def __str__(self):
