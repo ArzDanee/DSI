@@ -79,7 +79,7 @@
                 <h4 class="gallery_title">Gallery</h4>
             </div>              
             <section class="gallery mt-2 justify-content-center align-content-center">
-                {% for media in game.images|game.videos %}
+                {% for media in game.overview %}
                 <div class="gallery__item">
                     {% if media.type == 'image' %}
                     <input type="radio" id="img-{{forloop.counter}}" {% if forloop.first %}checked{% endif %} name="gallery" class="gallery__selector"/>

@@ -26,6 +26,10 @@ class Game(models.Model):
     @property
     def videos(self):
         return Media.objects.filter(file_type=Media.VIDEO)
+    
+    @property
+    def overview(self):
+        return Media.objects
 
 class Media(models.Model):
     VIDEO = 'video'
