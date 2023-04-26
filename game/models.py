@@ -29,7 +29,7 @@ class Game(models.Model):
     
     @property
     def overview(self):
-        return Media.objects
+        return Media.objects.all
 
 class Media(models.Model):
     VIDEO = 'video'
