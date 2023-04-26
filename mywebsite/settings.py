@@ -13,10 +13,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
-import environ
-
-env = environ.Env()
-environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = '${{shared.SECRET_KEY}}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = ${{shared.DEBUG}}
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,7 +81,7 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 CSRF_TRUSTED_ORIGINS=['https://dsi-production.up.railway.app','https://*.motiongames.site', 'http://*.motiongames.site']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-DATABASES_URL = '${{Postgres.DATABASE_URL}}'
+DATABASES_URL = 'postgresql://postgres:a3DtRFzKDkRy4kIGWCmx@containers-us-west-8.railway.app:6055/railway'
 
 DATABASES = {
     'default': dj_database_url.config(default=DATABASES_URL),
@@ -135,11 +131,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-AWS_ACCESS_KEY_ID = env('SECRET_KEY')
-AWS_SECRET_ACCESS_KEY = env('SECRET_KEY')
-AWS_STORAGE_BUCKET_NAME = env('SECRET_KEY')
-AWS_S3_SIGNATURE_NAME = env('SECRET_KEY'),
-AWS_S3_REGION_NAME = env('SECRET_KEY')
+AWS_ACCESS_KEY_ID = '${{shared.AWS_ACCESS_KEY_ID}}'
+AWS_SECRET_ACCESS_KEY = '${{shared.AWS_SECRET_ACCESS_KEY}}'
+AWS_STORAGE_BUCKET_NAME = '${{shared.AWS_STORAGE_BUCKET_NAME}}'
+AWS_S3_SIGNATURE_NAME = '${{shared.AWS_S3_SIGNATURE_NAME}}',
+AWS_S3_REGION_NAME = '${{shared.AWS_S3_REGION_NAME}}'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
