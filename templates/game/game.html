@@ -79,17 +79,11 @@
                 <h4 class="gallery_title">Gallery</h4>
             </div>              
             <section class="gallery mt-2 justify-content-center align-content-center">
-                {% for media in game.overview %}
+                {% for image in game.images %}
                 <div class="gallery__item">
-                    {% if media.type == 'image' %}
-                    <input type="radio" id="img-{{forloop.counter}}" {% if forloop.first %}checked{% endif %} name="gallery" class="gallery__selector"/>
-                    <img class="gallery__img image_border w-100" src="{{ media.file.url }}" alt=""/>
-                    <label for="img-{{ forloop.counter }}" class="gallery__thumb"><img class="image-border" src="{{ media.file.url }}" alt=""/></label>
-                    {% else %}
-                    <input type="radio" id="vid-{{forloop.counter}}" {% if forloop.first %}checked{% endif %} name="gallery" class="gallery__selector"/>
-                    <video class="gallery__video" src="{{ media.file.url }}" controls></video>
-                    <label for="vid-{{ forloop.counter }}" class="gallery__thumb"><img class="image-border" src="{{ media.thumbnail.url }}" alt=""/></label>
-                    {% endif %}
+                  <input type="radio" id="img-{{forloop.counter}}" {% if forloop.first %}checked{% endif %} name="gallery" class="gallery__selector"/>
+                  <img class="gallery__img image_border w-100" src="{{ image.file.url }}" alt=""/>
+                  <label for="img-{{ forloop.counter }}" class="gallery__thumb"><img class="image-border" src="{{ image.file.url }}" alt=""/></label>
                 </div>
                 {% endfor %}
             </section>
