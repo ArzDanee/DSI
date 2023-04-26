@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '${{shared.SECRET_KEY}}'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ${{shared.DEBUG}}
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 CSRF_TRUSTED_ORIGINS=['https://dsi-production.up.railway.app','https://*.motiongames.site', 'http://*.motiongames.site']
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-DATABASES_URL = '${{Postgres.DATABASE_URL}}'
+DATABASES_URL = os.environ.get('DATABASE_URL')
 
 DATABASES = {
     'default': dj_database_url.config(default=DATABASES_URL),
@@ -131,11 +131,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-AWS_ACCESS_KEY_ID = '${{shared.AWS_ACCESS_KEY_ID}}'
-AWS_SECRET_ACCESS_KEY = '${{shared.AWS_SECRET_ACCESS_KEY}}'
-AWS_STORAGE_BUCKET_NAME = '${{shared.AWS_STORAGE_BUCKET_NAME}}'
-AWS_S3_SIGNATURE_NAME = '${{shared.AWS_S3_SIGNATURE_NAME}}',
-AWS_S3_REGION_NAME = '${{shared.AWS_S3_REGION_NAME}}'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_SIGNATURE_NAME = os.environ.get('AWS_S3_SIGNATURE_NAME'),
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL =  None
 AWS_S3_VERITY = True
