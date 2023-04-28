@@ -113,7 +113,7 @@ CKEDITOR_CONFIGS = {
     },
 
 }
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_BASEPATH = "/static_cdn/ckeditor/ckeditor/"
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
