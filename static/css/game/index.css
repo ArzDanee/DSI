@@ -50,6 +50,10 @@
     .artboard {
         padding: 5px;
     }
+
+    .col-6 {
+            width: 100%;
+    }
 }
 
 .card {
