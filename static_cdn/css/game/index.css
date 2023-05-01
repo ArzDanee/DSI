@@ -29,7 +29,11 @@
     position:relative;
   }
 
-  #owl-carousel .item img {
+#owl-carousel .owl-stage{
+    align-items: center;
+}
+
+#owl-carousel .owl-item img {
     display:block;
     width:25%;
     height:300px;
