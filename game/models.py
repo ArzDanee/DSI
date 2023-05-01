@@ -21,11 +21,11 @@ class Game(models.Model):
 
     @property
     def images(self):
-        return Media.objects.filter(file_type=Media.IMAGE)
+        return Media.objects.filter(game=self, file_type=Media.IMAGE)
 
     @property
     def videos(self):
-        return Media.objects.filter(file_type=Media.VIDEO)
+        return Media.objects.filter(game=self, file_type=Media.VIDEO)
     
     @property
     def overview(self):
