@@ -46,7 +46,7 @@
 
 {% block content3 %}
 
-<div class="row">
+<div class="row item-box">
     <div class="col-lg-12">
         <div class="d-flex p-2 align-items-center justify-content-center">
             <h3 class="section-header-text-black">Recent Games</h3>
@@ -55,8 +55,8 @@
 
 
     {% for obj in latest %}
-    <div class="col item-box">
-        <div class="artboard">
+    <div class="col">
+        <div class="artboard justify-content-center">
             <a href="{% url 'game' obj.slug %}">
                 <div class="card">
                     <div class="card__side card__side--back">
