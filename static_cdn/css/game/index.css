@@ -23,6 +23,19 @@
     font-weight: 700;
 }
 
+#owl-container {
+    width:50%;
+    height:100%;
+    position:relative;
+  }
+
+  #owl-carousel .item img {
+    display:block;
+    width:25%;
+    height:100%;
+    margin:0
+  }
+
 .artboard {
     display: flex;
     flex-flow: row;
