@@ -3,7 +3,7 @@ from .models import Game
 # Create your views here.
 
 def index(request):
-    latest = Game.objects.order_by('-updated')[0:3]
+    latest = Game.objects.order_by('-updated')
     featured = Game.objects.filter(featured=True).order_by('-updated')[:4]
 
     context = {
