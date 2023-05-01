@@ -28,7 +28,7 @@
 		items:3,
 		loop:true,
 		dots: false,
-		nav: true,
+		nav: false,
 		autoplay: true,
 		margin:30,
 		responsive:{
