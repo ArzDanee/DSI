@@ -1,6 +1,9 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
+User = get_user_model()
+
 class Game(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
@@ -10,7 +13,7 @@ class Game(models.Model):
     genre = models.CharField(max_length=100)
     game_mechanism = models.CharField(max_length=200)
     platform = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextUploadingField()
     steam_link = models.URLField()
     featured = models.BooleanField(default=False)
     thumbnail = models.FileField(upload_to='game_thumbnail')
